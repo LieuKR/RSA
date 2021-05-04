@@ -1,6 +1,6 @@
 public class Make_RSA_key{
     public static void main(String[] args) {
-    	make_key(2,3,2);
+    	make_key(41,5,2);
     	System.out.println(isprime(311));
     	System.out.println(isprime(312));
     	System.out.println(isprime(313));
@@ -10,6 +10,25 @@ public class Make_RSA_key{
     public static void make_key(int p, int q, int r) {
     	
     	// 1. p,q가 서로다른 소수인지 판별
+    	if(p == q) {
+    		System.out.println("같은 수가 입력되었습니다");
+    		return;
+    	} else if(isprime(p) == false) {
+    		if(isprime(q) == false) {
+    			System.out.println("p,q가 둘다 소수가 아닙니다");
+        		return;
+    		} else {
+        		System.out.println("p가 소수가 아닙니다");
+        		return;
+    		}
+    	} else if(isprime(q) == false) {
+    		System.out.println("q가 소수가 아닙니다");
+    		return;
+    	} 
+    	
+    	// p,q 판별 완료. 이후 키 생성 로직 진행
+
+    	
     	// 2. 0 < r < (p-1)*(q-1) 판별
     	// 3. N = p*q, φ(N)=(p-1)*(q-1)
     	// 4. φ(N)보다 작고, φ(N)와 서로소인 정수 e를 찾음. 이때 e값에 변수 r을 통해 변동을 주자
