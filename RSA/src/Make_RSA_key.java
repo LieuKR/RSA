@@ -26,12 +26,15 @@ public class Make_RSA_key{
     		return;
     	}
     	// 2번 삭제
-    	// 3. N = p*q, φ(N)=(p-1)*(q-1)
+    	// 3. N = p*q, pi = (p-1)*(q-1)
     	int N = p*q;
     	int pi = (p-1)*(q-1);
     	
-    	// 4. φ(N)보다 작고, φ(N)와 서로소인 정수 e를 찾음. 이때 e값에 랜덤값을 이용하여 변동을 줄 것
-    	// 5. Extended euclidean algorithm을 이용, de ≡ 1 (mod φ(N))를 만족하는 d를 찾는다.
+    	// 4. pi보다 작고, pi와 서로소인 정수 e를 찾음. 이때 e값에 랜덤값을 이용하여 변동을 줄 것
+    	
+    	
+    	
+    	// 5. Extended euclidean algorithm을 이용, de ≡ 1 (mod pi)를 만족하는 d를 찾는다.
     	// 6. (N,e)는 공용 키, (N,d)는 개인 키
     	
     	System.out.println("(N,e) : 공용 키, (N,d) : 개인 키");
