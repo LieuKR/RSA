@@ -1,6 +1,9 @@
 public class Make_RSA_key{
     public static void main(String[] args) {
     	make_key(2,3,2);
+    	System.out.println(isprime(311));
+    	System.out.println(isprime(312));
+    	System.out.println(isprime(313));
     }
     
     // 공개키, 개인키 만드는 메소드. p,q는 서로다른 소수, 0 < r < (p-1)*(q-1)
@@ -15,4 +18,24 @@ public class Make_RSA_key{
     	
     	System.out.println("(N,e) : 공용 키, (N,d) : 개인 키");
     }
+    
+    // 입력받은 값이 소수인지 판별하는 메소드. 리턴값이 true : 소수, false : 소수가 아님
+	public static boolean isprime(int n) {
+		if(n < 2) {
+			return false; // 1. 입력받은 값이 2 미만 : 소수가 아님
+		} else if(n == 2 || n == 3) {
+			return true; // 1. 입력받은 값이 2,3 : 소수
+		} else {
+			int i = 2;
+			while(i < n/2 + 1) { // 3. 3보다 큰 정수이면 판별. n을 n/2 + 1보다 작은 모든 수와 나눠보는 과정
+				if(n % i == 0) {
+					return false;
+				} else {
+					i = i + 1;
+				}
+			}
+			return true;
+		}
+    }
+    
 }
