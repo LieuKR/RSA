@@ -1,12 +1,8 @@
-import java.util.Arrays;
+// import java.util.Arrays; // 배열 출력하기 위해 가져온 모듈. 주석으로 처리한 System.out.println(Arrays.toString(Array)) 에서 사용됨
 
 public class Make_RSA_key{
     public static void main(String[] args) {
-    	make_key(311,313);
-    	System.out.println(isprime(311));
-    	System.out.println(isprime(312));
-    	System.out.println(isprime(313));
-    	System.out.println((int)(Math.random()*100));
+    	make_key(311,313);	
     }
     
     // 공개키, 개인키 만드는 메소드. p,q는 서로다른 소수
@@ -37,6 +33,7 @@ public class Make_RSA_key{
     	
     	// 랜덤변수 r : 0 ~ pi - 1 사이의 난수
     	int r = (int)(Math.random()*(pi - 1));
+    	// System.out.println(r);
     	
     	// while문을 위한 변수
     	int i = 2;
@@ -57,7 +54,7 @@ public class Make_RSA_key{
     	   	
     	int[] Array = {pi, k, 0, 1};
     	int[] temparr = new int[4];
-    	System.out.println(Arrays.toString(Array));
+    	// System.out.println(Arrays.toString(Array));
     	
     	// Extended euclidean algorithm 과정
     	while (Array[1] > 0){
@@ -78,10 +75,10 @@ public class Make_RSA_key{
         	Array[2] = Array[2] + pi ;
         } // 이제 Array[2] 값이 d값이 된다.
         
-
     	// 6. (N,e)는 공용 키, (N,d)는 개인 키
-    	
-    	System.out.println("(N,e) : 공용 키, (N,d) : 개인 키");
+    	System.out.println(
+    			String.format("(%s,%s) : 공용 키, (%s,%s) : 개인 키", N,k,N,Array[2])
+    			);
     }
     
     // 입력받은 값이 소수인지 판별하는 메소드. 리턴값이 true : 소수, false : 소수가 아님
