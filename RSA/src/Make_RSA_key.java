@@ -1,9 +1,10 @@
 public class Make_RSA_key{
     public static void main(String[] args) {
-    	make_key(41,5);
+    	make_key(311,313);
     	System.out.println(isprime(311));
     	System.out.println(isprime(312));
     	System.out.println(isprime(313));
+    	System.out.println((int)(Math.random()*100));
     }
     
     // 공개키, 개인키 만드는 메소드. p,q는 서로다른 소수
@@ -32,8 +33,26 @@ public class Make_RSA_key{
     	
     	// 4. pi보다 작고, pi와 서로소인 정수 e를 찾음. 이때 e값에 랜덤값을 이용하여 변동을 줄 것
     	
+    	// 랜덤변수 r : 0 ~ pi - 1 사이의 난수
+    	int r = (int)(Math.random()*(pi - 1));
     	
+    	// while문을 위한 변수
+    	int i = 2;
+    	int k = pi - r;
     	
+    	while(i < k) {
+    		// pi와 k 둘다 나누는 공통인수가 존재할 경우, 그때 k값은 서로소인 e가 될 수 없음
+    		if(pi % i == 0 && k % i == 0) {
+    			k = k-1;
+    			i = 2;
+    		} else {
+    			i = i + 1;
+    		}
+    	}	// 이때 k값이 서로소인 정수 e가 된다
+    	
+    	System.out.println("k값을 출력합니다");
+    	System.out.println(k);
+    	  	
     	// 5. Extended euclidean algorithm을 이용, de ≡ 1 (mod pi)를 만족하는 d를 찾는다.
     	// 6. (N,e)는 공용 키, (N,d)는 개인 키
     	
