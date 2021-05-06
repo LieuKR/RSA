@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Make_RSA_key{
     public static void main(String[] args) {
     	make_key(311,313);
@@ -52,6 +54,31 @@ public class Make_RSA_key{
     	}	// 이때 k값이 서로소인 정수 e
     	
     	// 5. Extended euclidean algorithm을 이용, de ≡ 1 (mod pi)를 만족하는 d를 찾는다.
+    	   	
+    	int[] Array = {pi, k, 0, 1};
+    	int[] temparr = new int[4];
+    	System.out.println(Arrays.toString(Array));
+    	
+    	// Extended euclidean algorithm 과정
+    	while (Array[1] > 0){
+    		// temparr에 원래 있던 array값 저장
+    		temparr[0] = Array[0];
+    		temparr[1] = Array[1];
+    		temparr[2] = Array[2];
+    		temparr[3] = Array[3];
+            int t = Array[0]/Array[1];
+            
+            // array 배열 변경
+            Array[0] = temparr[1];
+            Array[1] = temparr[0] % temparr[1];
+            Array[2] = temparr[3];
+            Array[3] = temparr[2] - (temparr[3] * t);
+    	} 
+        while (Array[2] < 0){
+        	Array[2] = Array[2] + pi ;
+        } // 이제 Array[2] 값이 d값이 된다.
+        
+
     	// 6. (N,e)는 공용 키, (N,d)는 개인 키
     	
     	System.out.println("(N,e) : 공용 키, (N,d) : 개인 키");
