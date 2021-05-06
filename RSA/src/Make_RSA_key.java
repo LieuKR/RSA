@@ -40,6 +40,7 @@ public class Make_RSA_key{
     	int i = 2;
     	int k = pi - r;
     	
+    	// 서로소인 정수 e를 찾는 과정
     	while(i < k) {
     		// pi와 k 둘다 나누는 공통인수가 존재할 경우, 그때 k값은 서로소인 e가 될 수 없음
     		if(pi % i == 0 && k % i == 0) {
@@ -48,11 +49,8 @@ public class Make_RSA_key{
     		} else {
     			i = i + 1;
     		}
-    	}	// 이때 k값이 서로소인 정수 e가 된다
+    	}	// 이때 k값이 서로소인 정수 e
     	
-    	System.out.println("k값을 출력합니다");
-    	System.out.println(k);
-    	  	
     	// 5. Extended euclidean algorithm을 이용, de ≡ 1 (mod pi)를 만족하는 d를 찾는다.
     	// 6. (N,e)는 공용 키, (N,d)는 개인 키
     	
